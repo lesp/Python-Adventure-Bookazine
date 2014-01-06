@@ -95,11 +95,11 @@ print "In the distance to the north you can see a small village, to the east you
 north()
 east()
 west()
-
-if raw_input() == "n":
+move = raw_input("Where would you like to go? ")
+if move == 'n':
     print "You move to the north, walking in the sunshine."
-elif raw_input() == "e":
+elif move == 'e':
     print "You walk to the river which lies to the east of your home."
-elif raw_input() == "w":
+elif move == 'w':
     print "You walk to the field of wild flowers, stopping to take in the beauty"
 
