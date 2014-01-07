@@ -67,9 +67,20 @@ def villager():
     print "Would you like to talk to me? Press y to talk to the villager"
     if raw_input() == "y":
         print response
-
     else:
         print("Goodbye")
+
+def enemy():
+    global enemyHP
+    global enemyMP
+    global enemyname
+    enemyHP = randint(5,20)
+    enemyMP = randint(5,20)
+    enemyname = "Ogre"
+    print "Suddenly you hear a roar, and from the shadows you see an " + enemyname
+    print enemyname
+    print "Your enemy has " + " " + str(enemyHP) + " " + "Health Points"
+    print "Your enemy has " + " " + str(enemyMP) + " " + "Magic Points"
 
 
 #We now use our functions in the game code, we call the title, the castle picture and then ask the game to run the setup for our character.
@@ -80,6 +91,7 @@ global name
 global HP
 global MP
 global move
+global enemyHP
 print "Welcome to the land of Narule" + " " + name
 sleep(2)
 print "Your health is" + " " + str(HP)
@@ -121,3 +133,40 @@ elif move == 'w':
     print "A villager is in your path and greets you"
 
 villager()
+enemy()
+sleep(10)
+
+fight = raw_input("Do you wish to fight?" )
+
+if fight == "y":
+    while HP > 0:
+        hit = randint(0,5)
+        print "You swing your sword and cause " + str(hit) + " of damage"
+        enemyHP = enemyHP - hit
+        print enemyHP
+        enemyhit = randint(0,5)
+        print "The ogre swings a club at you and causes " + str(enemyhit) + " of damage"
+        HP = HP - enemyhit
+        print HP
+else:
+    print "You turn and run away from the ogre"
+
+print "This is where this template ends, this is now YOUR world, build your adventure and share it with the world"
+
+print "   _       _                 _"
+print "  /_\   __| |_   _____ _ __ | |_ _   _ _ __ ___"
+print " //_\\ / _` \ \ / / _ \ '_ \| __| | | | '__/ _ \ "
+print "/  _  \ (_| |\ V /  __/ | | | |_| |_| | | |  __/"
+print "\_/ \_/\__,_| \_/ \___|_| |_|\__|\__,_|_|  \___|"
+
+print "                     _ _"
+print "  __ ___      ____ _(_) |_ ___"
+print " / _` \ \ /\ / / _` | | __/ __|"
+print "| (_| |\ V  V / (_| | | |_\__ \ "
+print " \__,_| \_/\_/ \__,_|_|\__|___/"
+
+print " _   _  ___  _   _"
+print "| | | |/ _ \| | | |"
+print "| |_| | (_) | |_| |"
+print " \__, |\___/ \__,_|"
+print " |___/"
