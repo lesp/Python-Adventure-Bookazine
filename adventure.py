@@ -1,9 +1,5 @@
 __author__ = 'Les Pounder'
 
-"""
-Use compass directions to control movement, and store the POV of the player as a variable
-"""
-
 from time import *
 from random import *
 from time import sleep
@@ -58,7 +54,25 @@ def setup():
     HP = randint(5,20)
     MP = randint(5,20)
 
-#We now use our function to
+def villager():
+    global npcname
+    global response
+    responses = ["Hi", "Are you a hero?", "Are you from this village?", "There has been a dark shadow cast across the village"]
+    npcnamechoice = ["Roger", "Dexter", "Sarah", "Susan"]
+    shuffle(npcnamechoice)
+    npcname = npcnamechoice[0]
+    print "Hello, my name is " + npcname
+    shuffle(responses)
+    response = responses[0]
+    print "Would you like to talk to me? Press y to talk to the villager"
+    if raw_input() == "y":
+        print response
+
+    else:
+        print("Goodbye")
+
+
+#We now use our functions in the game code, we call the title, the castle picture and then ask the game to run the setup for our character.
 title()
 castle()
 setup()
@@ -98,8 +112,12 @@ west()
 move = raw_input("Where would you like to go? ")
 if move == 'n':
     print "You move to the north, walking in the sunshine."
+    print "A villager is in your path and greets you"
 elif move == 'e':
     print "You walk to the river which lies to the east of your home."
+    print "A villager is in your path and greets you"
 elif move == 'w':
     print "You walk to the field of wild flowers, stopping to take in the beauty"
+    print "A villager is in your path and greets you"
 
+villager()
