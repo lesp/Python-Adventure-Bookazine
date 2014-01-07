@@ -51,14 +51,18 @@ def setup():
     global MP
     #Our variable "name" is used to store our name, captured by keyboard input.
     name = raw_input("What is your name warrior? ")
+    #randint is a great way of adding some variety to your players statistics.
     HP = randint(5,20)
     MP = randint(5,20)
 
 def villager():
+    #This will create a randomly named Villager to interact with
     global npcname
     global response
+    #Below is a list, we can store lots of things in a list and then retrieve them later.
     responses = ["Hi", "Are you a hero?", "Are you from this village?", "There has been a dark shadow cast across the village"]
     npcnamechoice = ["Roger", "Dexter", "Sarah", "Susan"]
+    #Shuffle will shuffle the list contents into a random order.
     shuffle(npcnamechoice)
     npcname = npcnamechoice[0]
     print "Hello, my name is " + npcname
@@ -76,6 +80,7 @@ def enemy():
     global enemyname
     enemyHP = randint(5,20)
     enemyMP = randint(5,20)
+    #Below is the enemy's name, perhaps you could change this to a list and then shuffle the list, such as we did for the villager above.
     enemyname = "Ogre"
     print "Suddenly you hear a roar, and from the shadows you see an " + enemyname
     print enemyname
@@ -93,13 +98,16 @@ global MP
 global move
 global enemyHP
 print "Welcome to the land of Narule" + " " + name
+#Sleep is Python's way of pausing the game for a specified number of seconds
 sleep(2)
+#Below we are using the helper functions to join a string of text to an integer via the str() helper.
 print "Your health is" + " " + str(HP)
 print "Your magic skill is" + " " + str(MP)
 
 
 
 print "Would you like to venture out into the land? Press y then enter to continue"
+#Below we use raw_input to ask for user input, and if it is equal to y, then the code underneath is run.
 if raw_input() == "y":
     print "You are in your home, with a roaring fireplace in front of you, above the fire you can see your sword and shield"
     print "Would you like to take your sword and shield? Press y then enter to continue"
@@ -118,6 +126,7 @@ else:
 print "Armed with your " + weapons[0] + " " + "and " + weapons[1] + " you swing open the door to your home and see a green valley gleaming in the sunshine."
 print "In the distance to the north you can see a small village, to the east you can see a river and to the west a field of wild flowers."
 
+#Remember those functions we created at the start of the code? Well here we are using them in the game.
 north()
 east()
 west()
@@ -125,6 +134,7 @@ move = raw_input("Where would you like to go? ")
 if move == 'n':
     print "You move to the north, walking in the sunshine."
     print "A villager is in your path and greets you"
+#elif is short for Else If and it means that if the previous condition is false, to check this condition to see if that is true.
 elif move == 'e':
     print "You walk to the river which lies to the east of your home."
     print "A villager is in your path and greets you"
@@ -140,6 +150,7 @@ fight = raw_input("Do you wish to fight?" )
 
 if fight == "y":
     while HP > 0:
+#This loop will only work while our characters HP is greater than 0.
         hit = randint(0,5)
         print "You swing your sword and cause " + str(hit) + " of damage"
         enemyHP = enemyHP - hit
