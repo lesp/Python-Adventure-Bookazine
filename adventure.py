@@ -1,8 +1,9 @@
 __author__ = 'Les Pounder'
 
+#The lines below import modules of code into our game, in particular these import time functions to allow us to pause and stop the game, and random provides a method of choosing random numbers or characters.
 from time import *
 from random import *
-from time import sleep
+
 
 #This is a function, we use it to do lots of things and then call it by it's name later on
 #To create a function we use "def name():" where name can be anything.
