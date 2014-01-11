@@ -69,14 +69,13 @@ def villager():
     #Shuffle will shuffle the list contents into a random order.
     shuffle(npcnamechoice)
     npcname = npcnamechoice[0]
-    print "Hello, my name is " + npcname
+    print "\n["+npcname+":] Hello, my name is "+npcname+", Would you like to talk to me?\n"
     shuffle(responses)
-    response = responses[0]
-    print "Would you like to talk to me? Press y to talk to the villager"
+    print "Press y to talk to the villager"
     if raw_input() == "y":
-        print response
+        print "["+npcname+":] " +responses[0]
     else:
-        print("Goodbye")
+        print("["+npcname+":] Goodbye")
 
 def enemy():
     global enemyHP
@@ -86,8 +85,8 @@ def enemy():
     enemyMP = randint(5,20)
     #Below is the enemy's name, perhaps you could change this to a list and then shuffle the list, such as we did for the villager above.
     enemyname = "Ogre"
-    print "Suddenly you hear a roar, and from the shadows you see an " + enemyname
-    print enemyname
+    print "\nSuddenly you hear a roar, and from the shadows you see an "+enemyname+" coming straight at you...."
+    #print enemyname
     print "Your enemy has " + " " + str(enemyHP) + " " + "Health Points"
     print "Your enemy has " + " " + str(enemyMP) + " " + "Magic Points"
 
@@ -134,24 +133,25 @@ else:
 print "In the distance to the north you can see a small village, to the east you can see a river and to the west a field of wild flowers."
 
 #Remember those functions we created at the start of the code? Well here we are using them in the game.
+print "\n"
 north()
 east()
 west()
 move = raw_input("Where would you like to go? ")
 if move == 'n':
-    print "You move to the north, walking in the sunshine."
+    print "\nYou move to the north, walking in the sunshine."
     print "A villager is in your path and greets you"
 #elif is short for Else If and it means that if the previous condition is false, to check this condition to see if that is true.
 elif move == 'e':
-    print "You walk to the river which lies to the east of your home."
+    print "\nYou walk to the river which lies to the east of your home."
     print "A villager is in your path and greets you"
 elif move == 'w':
-    print "You walk to the field of wild flowers, stopping to take in the beauty"
-    print "A villager is in your path and greets you"
+    print "\nYou walk to the field of wild flowers, stopping to take in the beauty"
+    print "A villager is in your path and greets you\n"
 
 villager()
 enemy()
-sleep(10)
+sleep(3)
 
 fight = raw_input("Do you wish to fight?" )
 
