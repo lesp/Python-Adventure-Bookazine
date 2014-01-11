@@ -3,7 +3,7 @@ __author__ = 'Les Pounder'
 #The lines below import modules of code into our game, in particular these import time functions to allow us to pause and stop the game, and random provides a method of choosing random numbers or characters.
 from time import *
 from random import *
-import os
+import os,sys
 
 #This is a function, we use it to do lots of things and then call it by it's name later on
 #To create a function we use "def name():" where name can be anything.
@@ -102,11 +102,11 @@ global HP
 global MP
 global move
 global enemyHP
-print "Welcome to the land of Narule" + " " + name
+print "Welcome to the land of Narule, " + name
 #Sleep is Python's way of pausing the game for a specified number of seconds
 sleep(2)
 #Below we are using the helper functions to join a string of text to an integer via the str() helper.
-print "Your health is" + " " + str(HP)
+print "\nYour health is" + " " + str(HP)
 print "Your magic skill is" + " " + str(MP)
 
 
@@ -122,13 +122,15 @@ if raw_input() == "y":
         weapons.append("sword")
         weapons.append("shield")
         print "You are now carrying your" + " " + weapons[0] + " " + "and your" + " " + weapons[1]
+	print "Armed with your " + weapons[0] + " " + "and " + weapons[1] + " you swing open the door to your home and see a green valley gleaming in the sunshine."
     else:
         print "You choose not to take your weapons"
+	print "Armed with your sense of humour, You swing open the door to see a green valley full of opportunity awaiting you."
 else:
     print "You stay at home, sat in your favourite chair watching the fire grow colder. The land of Narule no longer has a hero."
     print "Game Over"
-
-print "Armed with your " + weapons[0] + " " + "and " + weapons[1] + " you swing open the door to your home and see a green valley gleaming in the sunshine."
+    sys.exit(0)
+	
 print "In the distance to the north you can see a small village, to the east you can see a river and to the west a field of wild flowers."
 
 #Remember those functions we created at the start of the code? Well here we are using them in the game.
