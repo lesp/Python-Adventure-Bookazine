@@ -3,10 +3,13 @@ __author__ = 'Les Pounder'
 #The lines below import modules of code into our game, in particular these import time functions to allow us to pause and stop the game, and random provides a method of choosing random numbers or characters.
 from time import *
 from random import *
-
+import os,sys
 
 #This is a function, we use it to do lots of things and then call it by it's name later on
 #To create a function we use "def name():" where name can be anything.
+
+def clear_screen():  #Simple function that clears the screen
+    os.system('cls' if os.name=='nt' else 'clear')
 
 def title():
      print "   __                           _          __                                  "
@@ -66,14 +69,13 @@ def villager():
     #Shuffle will shuffle the list contents into a random order.
     shuffle(npcnamechoice)
     npcname = npcnamechoice[0]
-    print "Hello, my name is " + npcname
+    print "\n["+npcname+":] Hello, my name is "+npcname+", Would you like to talk to me?\n"
     shuffle(responses)
-    response = responses[0]
-    print "Would you like to talk to me? Press y to talk to the villager"
+    print "Press y to talk to the villager"
     if raw_input() == "y":
-        print response
+        print "["+npcname+":] " +responses[0]
     else:
-        print("Goodbye")
+        print("["+npcname+":] Goodbye")
 
 def enemy():
     global enemyHP
@@ -83,13 +85,14 @@ def enemy():
     enemyMP = randint(5,20)
     #Below is the enemy's name, perhaps you could change this to a list and then shuffle the list, such as we did for the villager above.
     enemyname = "Ogre"
-    print "Suddenly you hear a roar, and from the shadows you see an " + enemyname
-    print enemyname
+    print "\nSuddenly you hear a roar, and from the shadows you see an "+enemyname+" coming straight at you...."
+    #print enemyname
     print "Your enemy has " + " " + str(enemyHP) + " " + "Health Points"
     print "Your enemy has " + " " + str(enemyMP) + " " + "Magic Points"
 
 
 #We now use our functions in the game code, we call the title, the castle picture and then ask the game to run the setup for our character.
+clear_screen()
 title()
 castle()
 setup()
@@ -98,11 +101,11 @@ global HP
 global MP
 global move
 global enemyHP
-print "Welcome to the land of Narule" + " " + name
+print "Welcome to the land of Narule, " + name
 #Sleep is Python's way of pausing the game for a specified number of seconds
 sleep(2)
 #Below we are using the helper functions to join a string of text to an integer via the str() helper.
-print "Your health is" + " " + str(HP)
+print "\nYour health is" + " " + str(HP)
 print "Your magic skill is" + " " + str(MP)
 
 
@@ -118,34 +121,37 @@ if raw_input() == "y":
         weapons.append("sword")
         weapons.append("shield")
         print "You are now carrying your" + " " + weapons[0] + " " + "and your" + " " + weapons[1]
+	print "Armed with your " + weapons[0] + " " + "and " + weapons[1] + " you swing open the door to your home and see a green valley gleaming in the sunshine."
     else:
         print "You choose not to take your weapons"
+	print "Armed with your sense of humour, You swing open the door to see a green valley full of opportunity awaiting you."
 else:
     print "You stay at home, sat in your favourite chair watching the fire grow colder. The land of Narule no longer has a hero."
     print "Game Over"
-
-print "Armed with your " + weapons[0] + " " + "and " + weapons[1] + " you swing open the door to your home and see a green valley gleaming in the sunshine."
+    sys.exit(0)
+	
 print "In the distance to the north you can see a small village, to the east you can see a river and to the west a field of wild flowers."
 
 #Remember those functions we created at the start of the code? Well here we are using them in the game.
+print "\n"
 north()
 east()
 west()
 move = raw_input("Where would you like to go? ")
 if move == 'n':
-    print "You move to the north, walking in the sunshine."
+    print "\nYou move to the north, walking in the sunshine."
     print "A villager is in your path and greets you"
 #elif is short for Else If and it means that if the previous condition is false, to check this condition to see if that is true.
 elif move == 'e':
-    print "You walk to the river which lies to the east of your home."
+    print "\nYou walk to the river which lies to the east of your home."
     print "A villager is in your path and greets you"
 elif move == 'w':
-    print "You walk to the field of wild flowers, stopping to take in the beauty"
-    print "A villager is in your path and greets you"
+    print "\nYou walk to the field of wild flowers, stopping to take in the beauty"
+    print "A villager is in your path and greets you\n"
 
 villager()
 enemy()
-sleep(10)
+sleep(3)
 
 fight = raw_input("Do you wish to fight?" )
 
